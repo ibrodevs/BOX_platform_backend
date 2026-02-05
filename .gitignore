@@ -1,0 +1,38 @@
+*.pyc
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+env/
+ENV/
+.env
+*.log
+.DS_Store
+
+# Database
+db.sqlite3
+*.db
+
+# Static files (will be collected during build)
+staticfiles/
+
+# Media files (uploaded by users)
+media/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build files
+*.egg-info/
+dist/
+build/
