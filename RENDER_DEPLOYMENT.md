@@ -89,7 +89,15 @@ Backend готов к деплою на Render.com. Все необходимы�
    GEMINI_API_KEY = your_gemini_api_key
    STRIPE_SECRET_KEY = your_stripe_secret_key
    STRIPE_PUBLISHABLE_KEY = your_stripe_publishable_key
+   
+   # Настройки суперпользователя (опционально - уже есть значения по умолчанию):
+   DJANGO_SUPERUSER_USERNAME = admin
+   DJANGO_SUPERUSER_EMAIL = admin@bivolboxing.com
+   DJANGO_SUPERUSER_PASSWORD = [создайте надежный пароль!]
    ```
+
+   **⚠️ ВАЖНО:** Обязательно установите переменную `DJANGO_SUPERUSER_PASSWORD` с надежным паролем!
+   Суперпользователь будет создан автоматически при первом деплое.
 
 6. **Деплой!**
    - Render автоматически начнет деплой
@@ -141,6 +149,13 @@ https://djecrety.ir/
 - `STRIPE_SECRET_KEY` - Для платежей
 - `STRIPE_PUBLISHABLE_KEY` - Для платежей
 
+### Для администратора (автоматическое создание):
+- `DJANGO_SUPERUSER_USERNAME` - По умолчанию: `admin`
+- `DJANGO_SUPERUSER_EMAIL` - По умолчанию: `admin@bivolboxing.com`
+- `DJANGO_SUPERUSER_PASSWORD` - **ОБЯЗАТЕЛЬНО установите надежный пароль!**
+
+**📚 Подробнее об администраторе:** См. файл `ADMIN_SETUP.md`
+
 ---
 
 ## 🧪 Проверка работы API
@@ -151,13 +166,26 @@ https://djecrety.ir/
 # Проверка health check
 curl https://your-app-name.onrender.com/api/
 
-# Проверка админки
-https://your-app-name.onrender.com/admin/
-
 # Проверка API endpoints
 https://your-app-name.onrender.com/api/courses/
 https://your-app-name.onrender.com/api/accounts/register/
 ```
+
+### 👨‍💼 Доступ к админ-панели Django:
+
+После деплоя перейдите на:
+```
+https://your-app-name.onrender.com/admin/
+```
+
+**Данные для входа:**
+- **Логин:** admin
+- **Email:** admin@bivolboxing.com  
+- **Пароль:** значение из переменной `DJANGO_SUPERUSER_PASSWORD`
+
+Суперпользователь создается автоматически при первом деплое!
+
+**📚 Подробная инструкция:** См. файл `ADMIN_SETUP.md`
 
 ---
 

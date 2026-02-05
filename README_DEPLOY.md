@@ -28,15 +28,19 @@ DEBUG = False
 DATABASE_URL = [Internal Database URL из PostgreSQL]
 ALLOWED_HOSTS = your-app.onrender.com
 CORS_ALLOWED_ORIGINS = https://your-frontend.com
+DJANGO_SUPERUSER_PASSWORD = 12345678
 ```
+
+**Суперпользователь (логин: admin, email: admin@bivolboxing.com) будет создан автоматически!**
 
 ### 5. Deploy!
 Render автоматически начнет деплой. Готово через 3-5 минут!
 
 ---
 
-## 📚 Полная инструкция:
-См. файл `RENDER_DEPLOYMENT.md`
+## 📚 Документация:
+- **Полная инструкция по деплою:** `RENDER_DEPLOYMENT.md`
+- **Настройка администратора:** `ADMIN_SETUP.md` 👨‍💼
 
 ## 🔧 Созданные файлы:
 - ✅ `build.sh` - скрипт сборки

@@ -12,5 +12,5 @@ python manage.py collectstatic --no-input
 # Run migrations
 python manage.py migrate
 
-# Create superuser (optional - if you want to create admin automatically)
-# python manage.py shell -c "from accounts.models import User; User.objects.create_superuser('admin', 'admin@bivolboxing.com', 'admin123') if not User.objects.filter(username='admin').exists() else None"
+# Create superuser automatically if none exists
+python manage.py create_superuser_if_none_exists
