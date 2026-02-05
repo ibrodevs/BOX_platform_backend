@@ -18,7 +18,7 @@ IS_RENDER = os.environ.get('RENDER', False)
 
 # Allowed Hosts
 if IS_RENDER:
-    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+    ALLOWED_HOSTS = ['*']  # Разрешаем все домены
 else:
     ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1').split(',')
 
@@ -153,29 +153,13 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
     'UPDATE_LAST_LOGIN': True,
 }
-if IS_RENDER:
-    # В production разрешаем только конкретные домены
-    cors_origins = os.environ.get('CORS_ALLOWED_ORIGINS', '')
-    if cors_origins:
-        CORS_ALLOWED_ORIGINS = cors_origins.split(',')
-    else:
-        CORS_ALLOWED_ORIGINS = []
-    CORS_ALLOW_ALL_ORIGINS = False
-else:
-    # В development разрешаем локальные адреса
-    CORS_ALLOWED_ORIGINS = [
-        "http://localhost:5173",
-        "http://localhost:5174",
-        "http://localhost:3000",
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:5174",
-        "http://127.0.0.1:3000",
-    ]
-
+# CORS настройки - разрешаем все источники для тестирования
+CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 # Security settings for production
-if not DEBUG:
+if not DEBUG and not IS_RENDER:
+    # Отключаем строгие security настройки для Render
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
